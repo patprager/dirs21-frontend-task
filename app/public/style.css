@@ -1,0 +1,157 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --backgroundcolor-template: #edf0ef;
+  --surface: #fffafa;
+  --primary-surface: #1a1e22;
+  --secondary-surface: #272d33;
+  --secondary-variante: #dce1e0;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+.background-color {
+  background-color: var(--backgroundcolor-template);
+}
+
+.subheadline {
+  color: var(--secondary-surface);
+  font-size: 0.75rem;
+
+  text-transform: uppercase;
+  letter-spacing: 0.025rem;
+  margin-left: 3.5rem;
+}
+
+.primary-button {
+  background-color: var(--secondary-surface);
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  color: var(--surface);
+  border: 0.07rem solid var(--secondary-surface);
+  border-radius: 0.175rem;
+
+  margin: 0.95rem 0.95rem 0 0;
+}
+
+.primary-button:hover {
+  background-color: var(--primary-surface);
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  color: var(--surface);
+  border: 0.07rem solid var(--secondary-surface);
+  border-radius: 0.175rem;
+}
+
+.primary-variant-button {
+  background-color: var(--surface);
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  color: var(--secondary-surface);
+  border: 0.07rem solid var(--secondary-surface);
+  border-radius: 0.175rem;
+
+  margin: 0.95rem 0.95rem 0 0;
+}
+
+.primary-variant-button:hover {
+  background-color: var(--secondary-variante);
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  color: var(--secondary-surface);
+  border: 0.07rem solid var(--secondary-surface);
+  border-radius: 0.175rem;
+
+  margin: 0.95rem 0.95rem 0 0;
+}
+
+.secondary-button {
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  color: var(--secondary-surface);
+  border: none;
+  background-color: transparent;
+
+  margin: 0.95rem 0.95rem 0 0;
+}
+
+.secondary-button:hover {
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  color: var(--primary-surface);
+  border: none;
+  background-color: transparent;
+
+  margin: 0.95rem 0.95rem 0 0;
+}
+
+/*create Menu Content*/
+.main-background {
+  background-color: var(--surface);
+  padding: 2.5rem;
+
+  border: 0.09rem solid var(--secondary-variante);
+  border-radius: 0.2rem;
+
+  margin: 1rem 3.5rem 1rem 3.5rem;
+}
+
+.type-description {
+  font-size: 0.875rem;
+}
+
+.input-field {
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+  width: 10rem;
+}
+
+/*create Content Card with the menu*/
+
+.content-card {
+  background-color: var(--surface);
+  padding: 2.5rem;
+
+  border: 0.12rem solid var(--secondary-variante);
+  border-radius: 0.2rem;
+
+  margin: 4rem 3.5rem 1rem 3.5rem;
+}
+
+.time-of-date {
+  color: var(--secondary-surface);
+  font-size: 1.23rem;
+
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.menu-name {
+  color: var(--primary-surface);
+  font-size: 1.5rem;
+
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.description-menu {
+  color: var(--primary-surface);
+  font-size: 1.12rem;
+
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+.cooking-length {
+}
+
+.menu-prise {
+  color: var(--primary-surface);
+  font-size: 2.5rem;
+  font-weight: 900;
+}
