@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <header>
-      <h2 class="subheadline">Create menu</h2>
-    </header>
     <main class="main-background">
+      <h2 class="subheadline">Create new menu</h2>
       <!-- Elements for creating new menu content -->
       <article class="create-menu">
         <!-- Descriptive text above to know which selection to make -->
@@ -12,7 +10,7 @@
         ><br />
 
         <!-- Dropdown list = consistency in category names & avoid different names for subdivision -->
-        <select name="based-time-of-day">
+        <select name="based-time-of-day" class="based-time-of-day">
           <option value="please-select">Please select</option>
           <option value="breakfast">Breakfast</option>
           <option value="appetiser">Appetiser</option>
@@ -24,7 +22,11 @@
         <label for="description-input-field" class="type-description"
           >Menu Name</label
         ><br />
-        <input class="input-field" type="text" placeholder="Court Name" /><br />
+        <input
+          class="input-field"
+          type="text"
+          placeholder="What is the name of the menu?"
+        /><br />
 
         <label for="description-input-field" class="type-description"
           >Description</label
@@ -32,7 +34,7 @@
         <input
           class="input-field"
           type="text"
-          placeholder="Describes the court"
+          placeholder="What best describes the menu?"
         /><br />
 
         <label for="description-input-field" class="type-description"
@@ -41,28 +43,37 @@
         <input
           class="input-field"
           type="text"
-          placeholder="Cooking Length"
+          placeholder="How long does the cooking take?"
         /><br />
 
         <label for="description-input-field" class="type-description"
           >Prise</label
         ><br />
-        <input class="input-field" type="text" placeholder="Prise" /><br />
-        <button class="primary-button">Add Menu</button>
+        <input
+          class="input-field"
+          type="text"
+          placeholder="How much does the court cost?"
+        /><br />
+        <section class="edit-btn">
+          <button class="primary-button">Add Menu</button>
+        </section>
       </article>
     </main>
 
-    <section class="content-card">
+    <article class="content-card">
       <div class="time-of-date">{{ courtData.timeOfDay }}</div>
       <div class="menu-name">{{ courtData.menuName }}</div>
       <div class="description-menu">{{ courtData.descriptionMenu }}</div>
       <div class="cooking-length">{{ courtData.cookingLength }}</div>
       <div class="menu-prise">{{ courtData.menuPrise }}</div>
 
-      <button class="primary-button">Edit</button>
-      <button class="primary-variant-button">Deactivate</button>
-      <button class="secondary-button">Delete</button>
-    </section>
+      <!-- Visually highlight the edit and deactivate button to avoid the extra work of deleting. -->
+      <section class="edit-btn">
+        <button class="primary-button">Edit</button>
+        <button class="secondary-button">Deactivate</button>
+        <button class="incognito-button">Delete</button>
+      </section>
+    </article>
   </div>
 </template>
 <!-- JavaScript Part -->
@@ -79,10 +90,11 @@ export default {
     return {
       courtData: {
         timeOfDay: "Breakfast",
-        menuName: "Rumpsteak mit Schmorzwiebeln",
-        descriptionMenu: "dazu Bratkartoffel",
-        cookingLength: "45 Minuten",
-        menuPrise: "22 EUR",
+        menuName: "Golden Toast",
+        descriptionMenu:
+          "dazu Butter, hausgemachte Marmelade nach Saison & Schokoladenaufstrich",
+        cookingLength: "Zubereitung: 20 Minuten",
+        menuPrise: "12 EUR",
       },
     };
   },
