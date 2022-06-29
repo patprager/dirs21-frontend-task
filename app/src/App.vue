@@ -3,13 +3,14 @@
     <main class="main-background">
       <h2 class="subheadline">Create new menu</h2>
       <!-- Elements for creating new menu content -->
-      <article class="create-menu">
+
+      <form class="form">
         <!-- Descriptive text above to know which selection to make -->
         <label for="description-input-field" class="type-description"
-          >Based on time of day</label
+          >Time of day</label
         ><br />
 
-        <!-- Dropdown list = consistency in category names & avoid different names for subdivision -->
+        <!-- Dropdown list: consistency in category names & avoid different names for subdivision -->
         <select name="based-time-of-day" class="based-time-of-day">
           <option value="please-select">Please select</option>
           <option value="breakfast">Breakfast</option>
@@ -19,48 +20,59 @@
           <option value="dessert">Dessert</option></select
         ><br />
 
-        <label for="description-input-field" class="type-description"
-          >Menu Name</label
-        ><br />
-        <input
-          class="input-field"
-          type="text"
-          placeholder="What is the name of the menu?"
-        /><br />
+        <!-- Input fields:  -->
+        <div class="form__inputs">
+          <div class="form__left">
+            <label for="description-input-field" class="type-description"
+              >Menu Name</label
+            ><br />
+            <input
+              class="input-field"
+              type="text"
+              placeholder="What is the name of the menu?"
+            /><br />
 
-        <label for="description-input-field" class="type-description"
-          >Description</label
-        ><br />
-        <input
-          class="input-field"
-          type="text"
-          placeholder="What best describes the menu?"
-        /><br />
+            <label for="description-input-field" class="type-description"
+              >Description</label
+            ><br />
+            <input
+              class="input-field"
+              type="text"
+              placeholder="What best describes the menu?"
+            /><br />
+          </div>
 
-        <label for="description-input-field" class="type-description"
-          >Length of cooking</label
-        ><br />
-        <input
-          class="input-field"
-          type="text"
-          placeholder="How long does the cooking take?"
-        /><br />
+          <div class="form__right">
+            <label for="description-input-field" class="type-description"
+              >Length of cooking</label
+            ><br />
+            <input
+              id="input"
+              class="input-field"
+              type="text"
+              placeholder="How long does the cooking take?"
+            /><br />
 
-        <label for="description-input-field" class="type-description"
-          >Prise</label
-        ><br />
-        <input
-          class="input-field"
-          type="text"
-          placeholder="How much does the court cost?"
-        /><br />
+            <label for="description-input-field" class="type-description"
+              >Prise</label
+            ><br />
+            <input
+              id="input"
+              class="input-field"
+              type="text"
+              placeholder="How much does the court cost?"
+            /><br />
+          </div>
+        </div>
         <section class="edit-btn">
-          <button class="primary-button">Add Menu</button>
+          <button type="submit" id="add-btn" class="primary-button">
+            Add Menu
+          </button>
         </section>
-      </article>
+      </form>
     </main>
 
-    <article class="content-card">
+    <article class="content-card" id="menu-card">
       <div class="time-of-date">{{ courtData.timeOfDay }}</div>
       <div class="menu-name">{{ courtData.menuName }}</div>
       <div class="description-menu">{{ courtData.descriptionMenu }}</div>
@@ -70,36 +82,64 @@
       <!-- Visually highlight the edit and deactivate button to avoid the extra work of deleting. -->
       <section class="edit-btn">
         <button class="primary-button">Edit</button>
-        <button class="secondary-button">Deactivate</button>
+        <button class="secondary-button" id="toggle-btn-deactivate">
+          Deactivate
+        </button>
         <button class="incognito-button">Delete</button>
       </section>
     </article>
   </div>
 </template>
-<!-- JavaScript Part -->
-<!-- Add the food to the menu – Create a content card -->
+<!-- -->
 
-<!-- Deactivated menus become grey -->
-
-<!-- Button Toggle from Disable to Enable -->
-
-<!-- CSS Part -->
+<!--JavaScript Part -->
 <script>
 export default {
+  // Add the food to the menu – Create a content card
+
   data() {
     return {
-      courtData: {
-        timeOfDay: "Breakfast",
-        menuName: "Golden Toast",
-        descriptionMenu:
-          "dazu Butter, hausgemachte Marmelade nach Saison & Schokoladenaufstrich",
-        cookingLength: "Zubereitung: 20 Minuten",
-        menuPrise: "12 EUR",
-      },
+      filterTimeOfDay: "",
+      inputMenuName: "",
+      inputDescriptionMenu: "",
+      inputCookingLength: "",
+      inputMenuPrise: "",
+      courtData: [],
+      fetchData: [],
     };
   },
+  methods: {
+    loadCourtCard() {
+      fetch("http://localhost:9000")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          this.fetchData = data;
+        });
+    },
+  },
+
+  // Deactivated menus become grey
+
+  // Button Toggle from Disable to Enable
+
+  // data() {
+  //   return {
+  //     courtData: {
+  //       timeOfDay: "Breakfast",
+  //       menuName: "Golden Toast",
+  //       descriptionMenu:
+  //         "dazu Butter, hausgemachte Marmelade nach Saison & Schokoladenaufstrich",
+  //       cookingLength: "Zubereitung: 20 Minuten",
+  //       menuPrise: "12 EUR",
+  //     },
+  //   };
+  // },
 
   name: "App",
   mounted() {},
 };
 </script>
+
+<!-- CSS Part -->
