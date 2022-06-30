@@ -73,22 +73,24 @@
     </main>
 
     <!-- Create fictitious data in order to be able to style the output data in advance -->
-    <article class="content-card" id="menu-card">
-      <div class="time-of-date">{{ courtData.timeOfDay }}</div>
-      <div class="menu-name">{{ courtData.menuName }}</div>
-      <div class="description-menu">{{ courtData.descriptionMenu }}</div>
-      <div class="cooking-length">{{ courtData.cookingLength }}</div>
-      <div class="menu-prise">{{ courtData.menuPrise }}</div>
+    <article id="menu-card">
+      <!--<secticon class="content-card">
+        <div class="time-of-date">{{ courtData.timeOfDay }}</div>
+        <div class="menu-name">{{ courtData.menuName }}</div>
+        <div class="description-menu">{{ courtData.descriptionMenu }}</div>
+        <div class="cooking-length">{{ courtData.cookingLength }}</div>
+        <div class="menu-prise">{{ courtData.menuPrise }}</div>
 
-      <!-- Visually highlight the edit and deactivate button to avoid the extra work of deleting. -->
+    Visually highlight the edit and deactivate button to avoid the extra work of deleting. -->
       <!-- Buttons are only displayed when content menu maps are output -->
-      <section class="edit-btn">
-        <!--<button class="primary-button">Edit</button>
+      <!--<section class="edit-btn">
+        <button class="primary-button">Edit</button>
         <button class="secondary-button" id="toggle-btn-deactivate">
           Deactivate
         </button>
-        <button class="incognito-button">Delete</button>-->
+        <button class="incognito-button">Delete</button>
       </section>
+      </secticon>-->
     </article>
   </div>
 </template>
@@ -214,17 +216,28 @@ export default {
     createdNewMenuCard() {
       this.addCourtData();
 
+      // Create three buttons when the new menu card is created (innerHTML)
+
       if (this.createdNewMenuCard === true) {
-        const createThreeButtons = document.createElement("section");
-        const createEditButtonInMenuCard = document.querySelector(".edit-btn");
+        const createThreeButtons = document.createElement("article");
+        const createEditButtonInMenuCard = document.querySelector("#menu-card");
         createThreeButtons.classList.add(".edit-btn");
 
         createThreeButtons.innerHTML = `
+
+      <secticon class="content-card">
+        <div class="time-of-date">{{ courtData.timeOfDay }}</div>
+        <div class="menu-name">{{ courtData.menuName }}</div>
+        <div class="description-menu">{{ courtData.descriptionMenu }}</div>
+        <div class="cooking-length">{{ courtData.cookingLength }}</div>
+        <div class="menu-prise">{{ courtData.menuPrise }}</div>
+     </section>
+
+      <section class="edit-btn">
         <button class="primary-button">Edit</button>
-        <button class="secondary-button" id="toggle-btn-deactivate">
-          Deactivate
-        </button>
+        <button class="secondary-button" id="toggle-btn-deactivate"> Deactivate </button>
         <button class="incognito-button">Delete</button>
+    </section>
         `;
         createEditButtonInMenuCard.appendChild(createThreeButtons);
       }
