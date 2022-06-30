@@ -72,6 +72,7 @@
       </form>
     </main>
 
+    <!-- Create fictitious data in order to be able to style the output data in advance -->
     <article class="content-card" id="menu-card">
       <div class="time-of-date">{{ courtData.timeOfDay }}</div>
       <div class="menu-name">{{ courtData.menuName }}</div>
@@ -80,6 +81,7 @@
       <div class="menu-prise">{{ courtData.menuPrise }}</div>
 
       <!-- Visually highlight the edit and deactivate button to avoid the extra work of deleting. -->
+      <!-- Buttons are only displayed when content menu maps are output -->
       <section class="edit-btn">
         <button class="primary-button">Edit</button>
         <button class="secondary-button" id="toggle-btn-deactivate">
@@ -90,7 +92,6 @@
     </article>
   </div>
 </template>
-<!-- -->
 
 <!--JavaScript Part -->
 <script>
@@ -118,12 +119,112 @@ export default {
           this.fetchData = data;
         });
     },
+    addCourtData() {
+      if (this.filterTimeOfDay === "") {
+        alert("You didn't make an entry!");
+      } else {
+        fetch("http://localhost:9000", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: "",
+            description: this.filterTimeOfDay,
+          }),
+        })
+          .then((response) => response.json())
+          .then((newTimeOfDay) => {
+            this.fetchData.push(newTimeOfDay);
+          });
+        this.filterTimeOfDay = "";
+      }
+
+      if (this.inputMenuName === "") {
+        alert("You didn't make an entry!");
+      } else {
+        fetch("http://localhost:9000", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: "",
+            description: this.inputMenuName,
+          }),
+        })
+          .then((response) => response.json())
+          .then((newMenuName) => {
+            this.fetchData.push(newMenuName);
+          });
+        this.inputMenuName = "";
+      }
+
+      if (this.inputDescriptionMenu === "") {
+        alert("You didn't make an entry!");
+      } else {
+        fetch("http://localhost:9000", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: "",
+            description: this.inputDescriptionMenu,
+          }),
+        })
+          .then((response) => response.json())
+          .then((newMenuDescription) => {
+            this.fetchData.push(newMenuDescription);
+          });
+        this.inputDescriptionMenu = "";
+      }
+
+      if (this.inputCookingLength === "") {
+        alert("You didn't make an entry!");
+      } else {
+        fetch("http://localhost:9000", {
+          method: "POST",
+          headers: { "Content-Typ": "application/json" },
+          body: JSON.stringify({
+            id: "",
+            description: this.inputCookingLength,
+          }),
+        })
+          .then((response) => response.json())
+          .then((newCookingLength) => {
+            this.fetchData.push(newCookingLength);
+          });
+        this.inputCookingLength = "";
+      }
+
+      if (this.inputMenuPrise === "") {
+        alert("You didn't make an entry!");
+      } else {
+        fetch("http://localhost:9000", {
+          method: "POST",
+          headers: { "Content-Typ": "application/json" },
+          body: JSON.stringify({
+            id: "",
+            description: this.inputMenuPrise,
+          }),
+        })
+          .then((response) => response.json())
+          .then((newMenuPrise) => {
+            this.fetchData.push(newMenuPrise);
+          });
+        this.inputMenuPrise = "";
+      }
+    },
+
+    //createdNewMenuCard() {
+    //this.addCourtData()
+    //}
   },
+
+  // Edit Menu (Update Menu) = "PUT"
 
   // Deactivated menus become grey
 
   // Button Toggle from Disable to Enable
 
+  // Delete Menu "DELETE" with Button in the Menu Card
+
+  // Create fictitious data in order to be able to style the output data in advance.
   // data() {
   //   return {
   //     courtData: {
