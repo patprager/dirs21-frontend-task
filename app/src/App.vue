@@ -83,11 +83,11 @@
       <!-- Visually highlight the edit and deactivate button to avoid the extra work of deleting. -->
       <!-- Buttons are only displayed when content menu maps are output -->
       <section class="edit-btn">
-        <button class="primary-button">Edit</button>
+        <!--<button class="primary-button">Edit</button>
         <button class="secondary-button" id="toggle-btn-deactivate">
           Deactivate
         </button>
-        <button class="incognito-button">Delete</button>
+        <button class="incognito-button">Delete</button>-->
       </section>
     </article>
   </div>
@@ -211,9 +211,24 @@ export default {
       }
     },
 
-    //createdNewMenuCard() {
-    //this.addCourtData()
-    //}
+    createdNewMenuCard() {
+      this.addCourtData();
+
+      if (this.createdNewMenuCard === true) {
+        const createThreeButtons = document.createElement("section");
+        const createEditButtonInMenuCard = document.querySelector(".edit-btn");
+        createThreeButtons.classList.add(".edit-btn");
+
+        createThreeButtons.innerHTML = `
+        <button class="primary-button">Edit</button>
+        <button class="secondary-button" id="toggle-btn-deactivate">
+          Deactivate
+        </button>
+        <button class="incognito-button">Delete</button>
+        `;
+        createEditButtonInMenuCard.appendChild(createThreeButtons);
+      }
+    },
   },
 
   // Edit Menu (Update Menu) = "PUT"
