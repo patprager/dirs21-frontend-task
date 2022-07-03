@@ -11,8 +11,12 @@
         ><br />
 
         <!-- Dropdown list: consistency in category names & avoid different names for subdivision -->
-        <select name="based-time-of-day" class="based-time-of-day">
-          <option value="please-select">Please select</option>
+        <select
+          name="based-time-of-day"
+          class="based-time-of-day"
+          placeholder="Please select"
+          v-model="filterTimeOfDay"
+        >
           <option value="breakfast">Breakfast</option>
           <option value="appetiser">Appetiser</option>
           <option value="lunch">Lunch</option>
@@ -30,6 +34,7 @@
               class="input-field"
               type="text"
               placeholder="What is the name of the menu?"
+              v-model="inputMenuName"
             /><br />
 
             <label for="description-input-field" class="type-description"
@@ -39,6 +44,7 @@
               class="input-field"
               type="text"
               placeholder="What best describes the menu?"
+              v-model="inputDescriptionMenu"
             /><br />
           </div>
 
@@ -51,6 +57,7 @@
               class="input-field"
               type="text"
               placeholder="How long does the cooking take?"
+              v-model="inputCookingLength"
             /><br />
 
             <label for="description-input-field" class="type-description"
@@ -61,27 +68,34 @@
               class="input-field"
               type="text"
               placeholder="How much does the court cost?"
+              v-model="inputMenuPrise"
             /><br />
           </div>
         </div>
         <section class="edit-btn">
-          <button type="submit" id="add-btn" class="primary-button">
+          <button
+            type="submit"
+            id="add-btn"
+            class="primary-button"
+            @click="newMenuCard('Hello')"
+          >
             Add Menu
           </button>
         </section>
+        <div class="alert-error" v-if="formError">{{ formError }}</div>
       </form>
     </main>
 
     <!-- Create fictitious data in order to be able to style the output data in advance -->
     <article id="menu-card">
-      <!--<secticon class="content-card">
-        <div class="time-of-date">{{ courtData.timeOfDay }}</div>
-        <div class="menu-name">{{ courtData.menuName }}</div>
-        <div class="description-menu">{{ courtData.descriptionMenu }}</div>
-        <div class="cooking-length">{{ courtData.cookingLength }}</div>
-        <div class="menu-prise">{{ courtData.menuPrise }}</div>
+      <!--<section class="content-card">-->
+      <div class="time-of-date">{{ courtData.timeOfDay }}</div>
+      <div class="menu-name">{{ courtData.menuName }}</div>
+      <div class="description-menu">{{ courtData.descriptionMenu }}</div>
+      <div class="cooking-length">{{ courtData.cookingLength }}</div>
+      <div class="menu-prise">{{ courtData.menuPrise }}</div>
 
-    Visually highlight the edit and deactivate button to avoid the extra work of deleting. -->
+      <!-- Visually highlight the edit and deactivate button to avoid the extra work of deleting. -->
       <!-- Buttons are only displayed when content menu maps are output -->
       <!--<section class="edit-btn">
         <button class="primary-button">Edit</button>
@@ -90,7 +104,7 @@
         </button>
         <button class="incognito-button">Delete</button>
       </section>
-      </secticon>-->
+      </section>-->
     </article>
   </div>
 </template>
@@ -107,6 +121,8 @@ export default {
       inputDescriptionMenu: "",
       inputCookingLength: "",
       inputMenuPrise: "",
+      fromError: "",
+
       courtData: [],
       fetchData: [],
     };
@@ -122,94 +138,36 @@ export default {
         });
     },
     addCourtData() {
-      if (this.filterTimeOfDay === "") {
-        alert("You didn't make an entry!");
+      let errors = false;
+
+      if (this.filterTimeOfDay === "") errors = true;
+      if (this.inputMenuName === "") errors = true;
+      if (this.inputDescriptionMenu === "") errors = true;
+      if (this.inputCookingLength === "") errors = true;
+      if (this.inputMenuPrise === "") errors = true;
+
+      if (errors) {
+        this.fromError = "Please correct the mistakes!";
+        return false;
       } else {
         fetch("http://localhost:9000", {
-          method: "POST",
+          methode: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             id: "",
-            description: this.filterTimeOfDay,
-          }),
-        })
-          .then((response) => response.json())
-          .then((newTimeOfDay) => {
-            this.fetchData.push(newTimeOfDay);
-          });
-        this.filterTimeOfDay = "";
-      }
-
-      if (this.inputMenuName === "") {
-        alert("You didn't make an entry!");
-      } else {
-        fetch("http://localhost:9000", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            id: "",
-            description: this.inputMenuName,
-          }),
-        })
-          .then((response) => response.json())
-          .then((newMenuName) => {
-            this.fetchData.push(newMenuName);
-          });
-        this.inputMenuName = "";
-      }
-
-      if (this.inputDescriptionMenu === "") {
-        alert("You didn't make an entry!");
-      } else {
-        fetch("http://localhost:9000", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            id: "",
-            description: this.inputDescriptionMenu,
-          }),
-        })
-          .then((response) => response.json())
-          .then((newMenuDescription) => {
-            this.fetchData.push(newMenuDescription);
-          });
-        this.inputDescriptionMenu = "";
-      }
-
-      if (this.inputCookingLength === "") {
-        alert("You didn't make an entry!");
-      } else {
-        fetch("http://localhost:9000", {
-          method: "POST",
-          headers: { "Content-Typ": "application/json" },
-          body: JSON.stringify({
-            id: "",
-            description: this.inputCookingLength,
-          }),
-        })
-          .then((response) => response.json())
-          .then((newCookingLength) => {
-            this.fetchData.push(newCookingLength);
-          });
-        this.inputCookingLength = "";
-      }
-
-      if (this.inputMenuPrise === "") {
-        alert("You didn't make an entry!");
-      } else {
-        fetch("http://localhost:9000", {
-          method: "POST",
-          headers: { "Content-Typ": "application/json" },
-          body: JSON.stringify({
-            id: "",
-            description: this.inputMenuPrise,
-          }),
-        })
-          .then((response) => response.json())
-          .then((newMenuPrise) => {
-            this.fetchData.push(newMenuPrise);
-          });
-        this.inputMenuPrise = "";
+            description: {
+              timeOfDay: this.filterTimeOfDay,
+              menuName: this.inputMenuName,
+              menuDescription: this.inputDescriptionMenu,
+              cookingLength: this.inputCookingLength,
+              menuPrise: this.inputMenuPrise,
+            },
+          })
+            .then((response) => response.json())
+            .then((newMenuCard) => {
+              this.fetchData.push(newMenuCard);
+            }),
+        });
       }
     },
 
