@@ -152,9 +152,7 @@
         <!-- Buttons are only displayed when content menu maps are output -->
         <footer class="edit__btn">
           <button class="primary__button">Edit</button>
-          <button class="secondary__button" id="toggle-btn-deactivate">
-            Deactivate
-          </button>
+          <button class="secondary__button" id="toggle-btn">Deactivate</button>
           <button class="incognito__button">Delete</button>
         </footer>
       </article>
@@ -236,6 +234,7 @@ export default {
 
   // Create three buttons
   // Edit Menu (Update Menu) = "PUT"
+
   // Deactivated menus become grey
   // Button Toggle from Disable to Enable
 
