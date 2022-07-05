@@ -14,7 +14,7 @@
   --primary: #1a1e22;
   --primary-variante: #272d33;
 
-  --secondary: #494e54;
+  --secondary: #3b4252;
   --secondary-variante: #dce1e0;
 }
 
@@ -23,51 +23,50 @@ html {
   color: var(--primary);
 }
 
-.background-color {
+body {
   background-color: var(--backgroundcolor);
 }
 
 /* Button hierarchy - visually highlighted by different styling */
-
-.primary-button {
+.primary__button {
   background-color: var(--secondary);
   padding: 0.5rem 1.56rem 0.5rem 1.56rem;
 
   color: var(--surface);
-  border: 0.07rem solid var(--secondary);
+  border: 1.12px solid var(--secondary);
   border-radius: 0.175rem;
 
   margin: 0.95rem 0 0 0;
 }
 
-.primary-button:hover {
+.primary__button:hover {
   background-color: var(--primary);
   padding: 0.5rem 1.56rem 0.5rem 1.56rem;
 
   color: var(--surface);
-  border: 0.07rem solid var(--primary);
+  border: 1.12px solid var(--primary);
   border-radius: 0.175rem;
 }
 
-.secondary-button {
+.secondary__button {
   background-color: var(--surface);
   padding: 0.5rem 1.56rem 0.5rem 1.56rem;
 
-  border: 0.12rem solid var(--secondary);
+  border: 1.92px solid var(--secondary);
   border-radius: 0.175rem;
 
   margin: 0.95rem 0 0 0;
 }
 
-.secondary-button:hover {
-  background-color: var(--backgroundcolor);
+.secondary__button:hover {
+  background-color: var(--surface-variante);
   padding: 0.5rem 1.56rem 0.5rem 1.56rem;
 
-  border: 0.12rem solid var(--secondary);
+  border: 1.92px solid var(--secondary);
   border-radius: 0.175rem;
 }
 
-.incognito-button {
+.incognito__button {
   padding: 0.5rem 1.56rem 0.5rem 1.56rem;
 
   border: none;
@@ -77,35 +76,34 @@ html {
   margin: 0.95rem 0 0 0;
 }
 
-.incognito-button:hover {
+.incognito__button:hover {
   padding: 0.5rem 1.56rem 0.5rem 1.56rem;
 
   border: none;
   border-radius: 0.175rem;
-  background-color: var(--backgroundcolor);
+  background-color: var(--surface-variante);
 
   margin: 0.95rem 0 0 0;
 }
-
-/*create Menu Content*/
-.main-background {
+/* Content Mask */
+/*Content Box with Inputfields for create Menu Content*/
+.main__background {
   background-color: var(--surface-variante);
   padding: 1.75rem 2.5rem 2.5rem 2.5rem;
 
-  border: 0.09rem solid var(--secondary);
+  border: 1.44px solid var(--secondary);
   border-radius: 0.2rem;
 
-  margin: 1rem 7rem 1rem 7rem;
+  margin: 3.5rem 7rem;
 }
 
 .subheadline {
-  color: var(--secondary);
-  font-size: 0.85rem;
-  text-transform: uppercase;
+  font-size: 1rem;
   letter-spacing: 0.025rem;
-  font-weight: 300;
+  font-weight: 500;
 
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  margin-left: 0.15rem;
 }
 
 .form {
@@ -122,16 +120,16 @@ html {
   width: 100%;
 }
 
-.based-time-of-day {
+.based__dropdown {
   padding: 0.5rem 0.85rem 0.5rem 0.85rem;
   margin-bottom: 1.25rem;
 
   font-size: 0.875rem;
 
-  border: 0.09rem solid var(--secondary);
+  border: 1.44px solid var(--secondary);
   border-radius: 0.175rem;
 
-  width: 30%;
+  width: 100%;
 
   appearance: none;
   background: url("./assets/chevron-down.svg") #ffffff;
@@ -140,19 +138,19 @@ html {
   cursor: pointer;
 }
 
-.type-description {
+.type__description {
   font-size: 0.875rem;
   margin-left: 0.25rem;
 
   font-weight: 700;
 }
 
-.input-field {
+.input__field {
   padding: 0.5rem 0.85rem 0.5rem 0.85rem;
   margin-bottom: 1.25rem;
   margin-top: 0.2rem;
 
-  border: 0.09rem solid var(--secondary);
+  border: 1.44px solid var(--secondary);
   border-radius: 0.175rem;
 
   width: 100%;
@@ -163,49 +161,59 @@ html {
   font-size: 0.85rem;
 }
 
-/*create Content-Card with the menu*/
-.content-card {
+/*create Content with the menu*/
+.content__card {
   background-color: var(--surface);
   padding: 2.5rem;
 
-  border: 0.12rem solid var(--secondary-variante);
+  border: 1.92px solid var(--secondary-variante);
   border-radius: 0.2rem;
 
-  margin: 3.5rem 7rem 2rem 7rem;
+  margin: 1rem 7rem;
 }
 
-.time-of-date {
+.category__name {
   color: var(--secondary);
-  font-size: 1.13rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.099rem;
+  font-weight: 700;
+
+  margin-bottom: 2.355rem;
+}
+
+.time__of__date {
+  font-size: 0.97rem;
   text-transform: uppercase;
   letter-spacing: 0.025rem;
-  font-weight: 400;
+  font-weight: 300;
 
-  margin-bottom: 1.9rem;
+  margin-bottom: 0.07rem;
 }
 
-.menu-name {
+.menu__name {
   font-size: 2rem;
 
   font-weight: 700;
-  margin-bottom: 0.55rem;
+  margin-bottom: 1.75rem;
 }
 
-.description-menu {
+.description__menu {
   font-size: 1.092rem;
 
   font-weight: 400;
   line-height: 1.37rem;
   margin-bottom: 1.5rem;
 
-  width: 50%;
+  width: 70%;
 }
 
-.cooking-length {
+.cooking__length {
+  color: var(--secondary);
   font-size: 0.875rem;
 }
 
-.menu-prise {
+.menu__prise {
   font-size: 3.5rem;
   font-weight: 900;
 
@@ -215,7 +223,7 @@ html {
   justify-content: end;
 }
 
-.edit-btn {
+.edit__btn {
   display: flex;
   justify-content: flex-end;
 
