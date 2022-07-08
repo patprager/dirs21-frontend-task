@@ -1,0 +1,231 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --backgroundcolor: #edf0ef;
+  --inactiv-element: #a9b6b3;
+
+  --surface: #fffafa;
+  --surface-variante: #f5f5f5;
+
+  --primary: #1a1e22;
+  --primary-variante: #272d33;
+
+  --secondary: #3b4252;
+  --secondary-variante: #dce1e0;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  color: var(--primary);
+}
+
+body {
+  background-color: var(--backgroundcolor);
+}
+
+/* Button hierarchy - visually highlighted by different styling */
+.primary__button {
+  background-color: var(--secondary);
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  color: var(--surface);
+  border: 1.12px solid var(--secondary);
+  border-radius: 0.175rem;
+
+  margin: 0.95rem 0 0 0;
+}
+
+.primary__button:hover {
+  background-color: var(--primary);
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  color: var(--surface);
+  border: 1.12px solid var(--primary);
+  border-radius: 0.175rem;
+}
+
+.secondary__button {
+  background-color: var(--surface);
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  border: 1.92px solid var(--secondary);
+  border-radius: 0.175rem;
+
+  margin: 0.95rem 0 0 0;
+}
+
+.secondary__button:hover {
+  background-color: var(--surface-variante);
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  border: 1.92px solid var(--secondary);
+  border-radius: 0.175rem;
+}
+
+.incognito__button {
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  border: none;
+  border-radius: 0.175rem;
+  background-color: transparent;
+
+  margin: 0.95rem 0 0 0;
+}
+
+.incognito__button:hover {
+  padding: 0.5rem 1.56rem 0.5rem 1.56rem;
+
+  border: none;
+  border-radius: 0.175rem;
+  background-color: var(--surface-variante);
+
+  margin: 0.95rem 0 0 0;
+}
+/* Content Mask */
+/*Content Box with Inputfields for create Menu Content*/
+.main__background {
+  background-color: var(--surface-variante);
+  padding: 1.75rem 2.5rem 2.5rem 2.5rem;
+
+  border: 1.44px solid var(--secondary);
+  border-radius: 0.2rem;
+
+  margin: 3.5rem 7rem;
+}
+
+.subheadline {
+  font-size: 1rem;
+  letter-spacing: 0.025rem;
+  font-weight: 500;
+
+  margin-bottom: 2.5rem;
+  margin-left: 0.15rem;
+}
+
+.form {
+  width: 100%;
+}
+
+.form__inputs {
+  display: flex;
+  gap: 3rem;
+}
+
+.form__left,
+.form__right {
+  width: 100%;
+}
+
+.based__dropdown {
+  padding: 0.5rem 0.85rem 0.5rem 0.85rem;
+  margin-bottom: 1.25rem;
+
+  font-size: 0.875rem;
+
+  border: 1.44px solid var(--secondary);
+  border-radius: 0.175rem;
+
+  width: 100%;
+
+  appearance: none;
+  background: url("./assets/chevron-down.svg") #ffffff;
+  background-repeat: no-repeat;
+  background-position: 95%;
+  cursor: pointer;
+}
+
+.type__description {
+  font-size: 0.875rem;
+  margin-left: 0.25rem;
+
+  font-weight: 700;
+}
+
+.input__field {
+  padding: 0.5rem 0.85rem 0.5rem 0.85rem;
+  margin-bottom: 1.25rem;
+  margin-top: 0.2rem;
+
+  border: 1.44px solid var(--secondary);
+  border-radius: 0.175rem;
+
+  width: 100%;
+}
+
+::placeholder {
+  color: var(--inactiv-element);
+  font-size: 0.85rem;
+}
+
+/*create Content with the menu*/
+.content__card {
+  background-color: var(--surface);
+  padding: 2.5rem;
+
+  border: 1.92px solid var(--secondary-variante);
+  border-radius: 0.2rem;
+
+  margin: 1rem 7rem;
+}
+
+.category__name {
+  color: var(--secondary);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.099rem;
+  font-weight: 700;
+
+  margin-bottom: 2.355rem;
+}
+
+.time__of__date {
+  font-size: 0.97rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025rem;
+  font-weight: 300;
+
+  margin-bottom: 0.07rem;
+}
+
+.menu__name {
+  font-size: 2rem;
+
+  font-weight: 700;
+  margin-bottom: 1.75rem;
+}
+
+.description__menu {
+  font-size: 1.092rem;
+
+  font-weight: 400;
+  line-height: 1.37rem;
+  margin-bottom: 1.5rem;
+
+  width: 70%;
+}
+
+.cooking__length {
+  color: var(--secondary);
+  font-size: 0.875rem;
+}
+
+.menu__prise {
+  font-size: 3.5rem;
+  font-weight: 900;
+
+  margin-bottom: 0.97rem;
+
+  display: flex;
+  justify-content: end;
+}
+
+.edit__btn {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 0.75rem;
+}
